@@ -1,0 +1,4 @@
+# Opsional: hanya dibutuhkan jika ingin mendorong data bersih ke Google Sheets (Looker Studio)
+-r requirements.txt
+gspread>=6.0
+gspread-dataframe>=4.0

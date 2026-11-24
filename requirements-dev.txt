@@ -1,0 +1,3 @@
+-r requirements.txt
+pytest>=8.0
+Pillow>=10.0   # hanya untuk scripts/make_sample_data.py (membuat logo & tanda tangan dummy)

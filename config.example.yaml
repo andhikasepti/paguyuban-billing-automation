@@ -1,0 +1,55 @@
+# ==============================================================================
+# Konfigurasi contoh. Semua data di bawah ini FIKTIF.
+# Untuk pemakaian nyata: salin file ini menjadi `config.yaml` (sudah di-.gitignore)
+# lalu isi dengan data paguyuban Anda.
+# ==============================================================================
+
+organization:
+  name: "PAGUYUBAN WARGA TAMAN SEJAHTERA RESIDENCE"
+  address: "Taman Sejahtera Residence, Kota Contoh"
+  whatsapp: "0812-0000-0000"
+  city: "Kota Contoh"
+  chairman_name: "Budi Santoso"
+  chairman_title: "Ketua Paguyuban TSR"
+  address_prefix: "Taman Sejahtera Residence Blok"   # dipakai jika kolom alamat kosong
+  short_name: "Paguyuban Warga TSR"                    # dipakai pada catatan kwitansi
+
+bank:
+  name: "Bank Contoh Cabang Kota Contoh"
+  account_number: "000-000-0000"
+  account_holder: "Nama Bendahara"
+
+billing:
+  period: "November 2026"            # periode default bila kolom 'Jangka Pembayaran' kosong
+  invoice_date: "15 November 2026"   # kosongkan untuk memakai tanggal hari ini
+  due_day: 17                        # "Mohon melakukan pembayaran sebelum tanggal 17"
+  default_payment_type: "Iuran Lingkungan / IPL"
+
+assets:
+  logo: "assets/logo_placeholder.png"
+  signature: "assets/signature_placeholder.png"
+
+data:
+  # Sumber data: file Excel lokal. Alternatif: isi environment variable DATA_URL
+  # dengan direct-link (mis. Dropbox) agar tidak ada link yang tersimpan di repo.
+  excel_path: "data/sample_data.xlsx"
+  invoice_sheet: "Data Tagihan"
+  receipt_sheet: "Uang Masuk November 2026"
+
+cleaning:
+  # Tahap opsional: merapikan data warga agar siap dipakai dashboard (Looker Studio)
+  source_sheet: "Data Input"
+  header_row: 10          # indeks baris header (0 = baris 1). Header ada di baris ke-11
+  column_map:             # NAMA_BERSIH: "nama kolom di sumber"
+    "NO": "NO"        # tanda kutip wajib: tanpa kutip YAML membaca NO sebagai False
+    KAVLING: "KAVLING"
+    BLOCK: "BLOCK"
+    NAMA_WARGA: "NAMA WARGA"
+    LUAS: "LUAS"
+    JENIS_PROPERTI: "JENIS PROPERTI"
+    TARIF: "TARIF"
+  target_tab: "Data_Looker_Ready"
+  # URL Google Sheet diisi lewat environment variable GOOGLE_SHEET_URL (jangan di-commit)
+
+output:
+  directory: "output"
