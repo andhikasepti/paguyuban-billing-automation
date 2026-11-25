@@ -153,7 +153,7 @@ def build_invoice(data: InvoiceData, settings, output_path: Path) -> Path:
     )
     story.append(Spacer(1, 4))
 
-    sign = Table([["", signature_block(settings, st, _tanggal_surat(settings), sig_box=(60, 30))]], colWidths=[360, 190])
+    sign = Table([["", signature_block(settings, st, _tanggal_surat(settings), sig_box=(60, 30), col_width=190)]], colWidths=[360, 190])
     sign.setStyle(
         TableStyle(
             [
