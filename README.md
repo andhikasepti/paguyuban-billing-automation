@@ -9,7 +9,7 @@ Script Python untuk membuat surat tagihan iuran dan kwitansi paguyuban warga per
 
 > Semua data di repo ini fiktif: nama warga, blok, rekening, nomor telepon, logo, dan tanda tangan.
 
-## Yang bisa dilakukan
+## Fitur
 
 - Membuat PDF surat tagihan dan kwitansi (A5 landscape) lengkap dengan logo, tanda tangan, dan status bayar.
 - Mengisi terbilang otomatis kalau kolomnya kosong, misalnya "Enam Ratus Ribu Rupiah".
@@ -43,7 +43,7 @@ Perintah lainnya:
 
 Tambahkan `-c config.yaml` untuk memilih file konfigurasi, atau `-o folder` untuk mengganti folder output.
 
-## Pakai data sendiri
+## Mengganti data contoh
 
 1. Salin konfigurasi: `cp config.example.yaml config.yaml` (file ini sudah masuk `.gitignore`).
 2. Isi identitas paguyuban, rekening, nama ketua, serta lokasi file logo dan tanda tangan.
@@ -109,11 +109,11 @@ examples/output/     contoh hasil PDF
 
 Untuk menjalankan test: `pip install -r requirements-dev.txt`, lalu `pytest`.
 
-## Soal data pribadi
+## Privasi
 
 Dokumen iuran berisi nama, alamat, dan nomor rekening warga. Jadi jangan commit data asli, `config.yaml`, kredensial, atau folder `output/`. Semuanya sudah ada di `.gitignore`. Logo dan tanda tangan di repo ini hanya placeholder. Pakai aset resmi hanya di komputer sendiri.
 
-## Rencana ke depan
+## Pengembangan berikutnya
 
 - [ ] Kirim PDF lewat WhatsApp atau email
 - [ ] Tampilan web sederhana untuk pengurus yang tidak biasa pakai terminal
