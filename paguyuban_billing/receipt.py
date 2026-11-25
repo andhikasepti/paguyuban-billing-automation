@@ -107,7 +107,7 @@ def build_receipt(data: ReceiptData, settings, output_path: Path) -> Path:
         TableStyle([("VALIGN", (0, 0), (-1, -1), "MIDDLE"), ("LEFTPADDING", (0, 0), (-1, -1), 0), ("RIGHTPADDING", (0, 0), (-1, -1), 0)])
     )
 
-    footer = Table([[note_table, signature_block(settings, st, data.tanggal, sig_box=(70, 38))]], colWidths=[370, 180])
+    footer = Table([[note_table, signature_block(settings, st, data.tanggal, sig_box=(70, 38), col_width=180)]], colWidths=[370, 180])
     footer.setStyle(
         TableStyle(
             [
