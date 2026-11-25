@@ -145,15 +145,29 @@ def header_block(settings, styles, logo_box, left_width, right_flowables, col_wi
     return header
 
 
-def signature_block(settings, styles, date_text: str, sig_box=(50, 32)) -> list:
+def signature_block(settings, styles, date_text: str, sig_box=(50, 32), col_width: float = 180) -> list:
     """Blok kota/tanggal, jabatan, tanda tangan, dan nama ketua (rata tengah)."""
     center = lambda key, name, **kw: derive(styles[key], name, alignment=1, **kw)
+    # Image di dalam sel tabel tidak otomatis rata tengah (menempel ke kiri),
+    # jadi dibungkus tabel selebar kolom supaya sejajar dengan teks di atas/bawahnya.
+    sig_img = Table([[fit_image(settings.assets.signature, *sig_box)]], colWidths=[col_width])
+    sig_img.setStyle(
+        TableStyle(
+            [
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+            ]
+        )
+    )
     return [
         Paragraph(f"{esc(settings.organization.city)}, {esc(date_text)}", center("value", "sig_date")),
         Spacer(1, 2),
         Paragraph(f"<b>{esc(settings.organization.chairman_title)}</b>", center("value_bold", "sig_role", fontSize=8)),
         Spacer(1, 2),
-        fit_image(settings.assets.signature, *sig_box),
+        sig_img,
         Spacer(1, 2),
         Paragraph(f"<b>{esc(settings.organization.chairman_name)}</b>", center("value_bold", "sig_name")),
     ]
